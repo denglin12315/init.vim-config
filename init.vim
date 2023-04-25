@@ -1,10 +1,30 @@
-set nu
-
 " ================== nvim包含插件列表
 call plug#begin('~/.config/nvim/plugged')
 Plug 'ludovicchabant/vim-gutentags'	" github地址
 Plug 'skywind3000/gutentags_plus'	" 提供GscopeFind命令的插件
+Plug 'crusoexia/vim-monokai'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
+
+set nu
+syntax on
+colorscheme monokai
+
+" ================== vim-airline插件配置
+" -- 启用标签栏
+let g:airline#extensions#tabline#enabled = 1
+" -- 设置标签栏分隔符
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" -- 设置标签栏格式
+let g:airline#extensions#tabline#formatter = 'default'
+" -- 设置标签栏样式
+let g:airline_theme = 'desertink'
+"-- 快捷键e切换到前一个标签
+nmap e <Plug>AirlineSelectPrevTab
+"-- 快捷键E切换到后一个标签
+nmap E <Plug>AirlineSelectNextTab
 
 " ================== vim-gutentags插件配置
 " gutentags搜索工程根目录的标志，碰到这些文件/目录名就代表找到了工程的根目录，停止向上一级目录递归
