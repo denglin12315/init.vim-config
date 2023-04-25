@@ -7,29 +7,26 @@ Plug 'skywind3000/gutentags_plus'	" 提供GscopeFind命令的插件
 call plug#end()
 
 " ================== vim-gutentags插件配置
-" gutentags搜索工程根目录的标志，碰到这些文件/目录名
-" 就代表找到了工程的根目录，停止向上一级目录递归
+" gutentags搜索工程根目录的标志，碰到这些文件/目录名就代表找到了工程的根目录，停止向上一级目录递归
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
 
 " 所生成的数据文件的名称
 let g:gutentags_ctags_tagfile = '.tags'
 
-" 同时开启 ctags 和 gtags 支持：
+" 同时开启ctags和gtags支持
 let g:gutentags_modules = []
 if executable('ctags')
     let g:gutentags_modules += ['ctags']
 endif
-" global安装好以后，有global、gtags、gtags-cscope三个命令。global是查询，
-" gtags是生成索引文件，gtags-cscope是与cscope一样的界面
+" global安装好以后，有global、gtags、gtags-cscope三个命令。global是查询，gtags是生成索引文件，gtags-cscope是与cscope一样的界面
 if executable('gtags-cscope') && executable('gtags')
     let g:gutentags_modules += ['gtags_cscope']
 endif
 
-" 将自动生成的tags文件全部放入~/.cache/tags目录中，避
-" 免污染工程目录
+" 将自动生成的tags文件全部放入~/.cache/tags目录中，避免污染工程目录
 let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
-" 检测 ~/.cache/tags 不存在就新建
+" 检测~/.cache/tags不存在就新建
 if !isdirectory(s:vim_tags)
    silent! call mkdir(s:vim_tags, 'p')
 endif
@@ -41,14 +38,14 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 " 启用gutentags自动加载gtags数据库的行为
 let g:gutentags_auto_add_gtags_cscope = 1
-"Change focus to quickfix window after search (optional).
+" Change focus to quickfix window after search (optional).
 let g:gutentags_plus_switch = 1
-"Enable advanced commands: GutentagsToggleTrace, etc.
+" Enable advanced commands: GutentagsToggleTrace, etc.
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_trace = 0
 
 " 配置gtags-cscope的参数
-if has("cscope")
+if has("cscope") 	" vim的一种内置函数，用于检查当前vim是否支持cscope的功能
     if executable('gtags-cscope') && executable('gtags')
         "禁用原GscopeFind按键映射
         let g:gutentags_plus_nomap = 1
@@ -68,42 +65,6 @@ if has("cscope")
         nmap <C-\>f :GscopeFind f <C-R>=expand("<cfile>")<CR><CR>
         "Find files #including this file 查找包含本文件的文件
         nmap <C-\>i :GscopeFind i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    else
-        set csto=1
-        set cst
-        set nocsverb
-        " add any database in current directory
-        if filereadable("cscope.out")
-            cs add cscope.out
-        endif
-        set csverb
-
-        nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-        nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-        nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-        nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-        nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-        nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-        nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-        nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-
-        nmap <C-F12> :cs add cscope.out<CR>
-        "F12用ctags生成tags
-        nmap <F12> :!ctags -R --c++-kinds=+p --fields=+ialS --extra=+q -f .tags<CR>
-        "--language-force=C++
-        nmap <S-F12> :!cscope -Rbkq<CR>
-        " cscope参数
-        "-R: 在生成索引文件时，搜索子目录树中的代码
-        "-b: 只生成索引文件，不进入cscope的界面
-        "-d: 只调出cscope gui界面，不跟新cscope.out
-        "-k: 在生成索引文件时，不搜索/usr/include目录
-        "-q: 生成cscope.in.out和cscope.po.out文件，加快cscope的索引速度
-        "-i: 如果保存文件列表的文件名不是cscope.files时，需要加此选项告诉cscope到哪儿去找源文件列表。可以使用"-"，表示由标准输入获得文件列表。
-        "-I dir: 在-I选项指出的目录中查找头文件
-        "-u: 扫描所有文件，重新生成交叉索引文件
-        "-C: 在搜索时忽略大小写
-        "-P path: 在以相对路径表示的文件前加上的path，这样，你不用切换到你数据库文件所在的目录也可以使用
     endif
 endif
-
 
