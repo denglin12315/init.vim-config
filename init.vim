@@ -94,21 +94,18 @@ if has("cscope") 	" vim的一种内置函数，用于检查当前vim是否支持
     endif
 endif
 
-" 配置nerd-tree的参数
-" 为打开或关闭nerdtree设置一个快捷键
-nnoremap 1 :NERDTreeToggle<CR>
+" ===============配置nerd-tree的参数
+nnoremap <F2> :NERDTreeToggle<CR>
 " 自动开启nerdtree
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 " 设定nerdtree的窗口大小
-let g:NERDTreeWinSize = 25
+" let g:NERDTreeWinSize = 25
 " 打开nerdtree时自动显示bookmarks
 let NERDTreeShowBookmarks=1
 " 打开nvim时若没有任何文件，则自动打开nerdtree
 autocmd vimenter * if !argc()|NERDTree|endif
 " 当nerdtree为唯一视窗时，自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" 每次打开一个新的标签，都默认打开nerdtree
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 " 设置树的图标,以区分已打开或未打开
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -155,7 +152,7 @@ let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
 
 let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
+let g:NERDTreeExtensionHighlightColor['c'] = s:blue " sets the color of c files to blue
 
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
@@ -167,10 +164,10 @@ let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders
 let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
 
 " ===============配置taglist的参数
-let Tlist_Auto_Open=1
-let Tlist_Show_One_File=1		"不同时显示多个文件的tag，只显示当前文件的
-let Tlist_Exit_OnlyWindow=1		"如果taglist窗口是最后一个窗口，则退出vim
-let Tlist_Ctags_Cmd="/usr/bin/ctags"	"将taglist与ctags关联
+let Tlist_Auto_Open=0			" 不自动打开taglist窗口
+let Tlist_Show_One_File=1		" 不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow=1		" 如果taglist窗口是最后一个窗口，则退出vim
+let Tlist_Ctags_Cmd="/usr/bin/ctags"	" 将taglist与ctags关联
 let Tlist_Auto_Highlight_Tag=1
 let Tlist_Auto_Update=1
 let Tlist_Display_Tag_Scope=1
@@ -178,7 +175,7 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Enable_Dold_Column=1
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Show_One_File=1
-"let Tlist_Use_Right_Window=1		" taglist窗口停靠到右边
+let Tlist_Use_Right_Window=1		" taglist窗口停靠到右边
 let Tlist_Use_SingleClick=1
 nnoremap <F3> :TlistToggle<CR>
 
