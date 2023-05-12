@@ -11,6 +11,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin' 	" 显示nredtree中文件和目录的Git状�
 Plug 'ryanoasis/vim-devicons'		" 支持nredtree中文件和目录的图标
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " 支持高亮显示nredtree中的图标
 Plug 'vim-scripts/taglist.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 set nu
@@ -27,6 +29,8 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 " -- 设置标签栏样式
 let g:airline_theme = 'desertink'
+" -- 设置标签栏字体
+let g:airline_powerline_fonts=1
 "-- 快捷键e切换到前一个标签
 nmap e <Plug>AirlineSelectPrevTab
 "-- 快捷键E切换到后一个标签
@@ -179,4 +183,6 @@ let Tlist_Use_Right_Window=1		" taglist窗口停靠到右边
 let Tlist_Use_SingleClick=1
 nnoremap <F3> :TlistToggle<CR>
 
+" ==============配置quickfix参数
+autocmd FileType qf setlocal winheight=10	" quickfix 窗口高度设置为10,默认为4
 
