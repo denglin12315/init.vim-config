@@ -23,15 +23,60 @@ colorscheme monokai
 " ================== vim-airline插件配置
 " -- 启用标签栏
 let g:airline#extensions#tabline#enabled = 1
-" -- 设置标签栏分隔符
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-" -- 设置标签栏格式
-let g:airline#extensions#tabline#formatter = 'default'
-" -- 设置标签栏样式
+" -- 设置标签栏主题
 let g:airline_theme = 'desertink'
-" -- 设置标签栏字体
-let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#buffer_idx_format = {
+	\ '0': '0 ',
+	\ '1': '1 ',
+	\ '2': '2 ',
+	\ '3': '3 ',
+	\ '4': '4 ',
+	\ '5': '5 ',
+	\ '6': '6 ',
+	\ '7': '7 ',
+	\ '8': '8 ',
+	\ '9': '9 '
+	\}
+
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.colnr = ' ㏇:'
+let g:airline_symbols.colnr = ' ℅:'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = ' ␊:'
+let g:airline_symbols.linenr = ' ␤:'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.colnr = ' ℅:'
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ' :'
+let g:airline_symbols.maxlinenr = '☰ '
+let g:airline_symbols.dirty='⚡'
+
 "-- 快捷键e切换到前一个标签
 nmap e <Plug>AirlineSelectPrevTab
 "-- 快捷键E切换到后一个标签
@@ -47,11 +92,11 @@ let g:gutentags_ctags_tagfile = '.tags'
 " 同时开启ctags和gtags支持
 let g:gutentags_modules = []
 if executable('ctags')
-    let g:gutentags_modules += ['ctags']
+	let g:gutentags_modules += ['ctags']
 endif
 " global安装好以后，有global、gtags、gtags-cscope三个命令。global是查询，gtags是生成索引文件，gtags-cscope是与cscope一样的界面
 if executable('gtags-cscope') && executable('gtags')
-    let g:gutentags_modules += ['gtags_cscope']
+	let g:gutentags_modules += ['gtags_cscope']
 endif
 
 " 将自动生成的tags文件全部放入~/.cache/tags目录中，避免污染工程目录
@@ -59,7 +104,7 @@ let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
 " 检测~/.cache/tags不存在就新建
 if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
+	silent! call mkdir(s:vim_tags, 'p')
 endif
 
 " 配置ctags的参数
@@ -77,26 +122,26 @@ let g:gutentags_trace = 0
 
 " 配置gtags-cscope的参数
 if has("cscope") 	" vim的一种内置函数，用于检查当前vim是否支持cscope的功能
-    if executable('gtags-cscope') && executable('gtags')
-        "禁用原GscopeFind按键映射
-        let g:gutentags_plus_nomap = 1
-        "Find this C symbol 查找C语言符号，即查找函数名、宏、枚举值等出现的地方
-        nmap <C-\>s :GscopeFind s <C-R>=expand("<cword>")<CR><CR>
-        "Find this difinition 查找函数、宏、枚举等定义的位置，类似ctags所提供的功能
-        nmap <C-\>g :GscopeFind g <C-R>=expand("<cword>")<CR><CR>
-        "Find functions called by this function 查找本函数调用的函数
-        nmap <C-\>d :GscopeFind d <C-R>=expand("<cword>")<CR><CR>
-        "Find functions calling this function 查找调用本函数的函数
-        nmap <C-\>c :GscopeFind c <C-R>=expand("<cword>")<CR><CR>
-        "Find this text string 查找指定的字符串
-        nmap <C-\>t :GscopeFind t <C-R>=expand("<cword>")<CR><CR>
-        "Find this egrep pattern 查找egrep模式，相当于egrep功能，但查找速度快多了
-        nmap <C-\>e :GscopeFind e <C-R>=expand("<cword>")<CR><CR>
-        "Find this file 查找并打开文件，类似vim的能
-        nmap <C-\>f :GscopeFind f <C-R>=expand("<cfile>")<CR><CR>
-        "Find files #including this file 查找包含本文件的文件
-        nmap <C-\>i :GscopeFind i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    endif
+	if executable('gtags-cscope') && executable('gtags')
+		"禁用原GscopeFind按键映射
+		let g:gutentags_plus_nomap = 1
+		"Find this C symbol 查找C语言符号，即查找函数名、宏、枚举值等出现的地方
+		nmap <C-\>s :GscopeFind s <C-R>=expand("<cword>")<CR><CR>
+		"Find this difinition 查找函数、宏、枚举等定义的位置，类似ctags所提供的功能
+		nmap <C-\>g :GscopeFind g <C-R>=expand("<cword>")<CR><CR>
+		"Find functions called by this function 查找本函数调用的函数
+		nmap <C-\>d :GscopeFind d <C-R>=expand("<cword>")<CR><CR>
+		"Find functions calling this function 查找调用本函数的函数
+		nmap <C-\>c :GscopeFind c <C-R>=expand("<cword>")<CR><CR>
+		"Find this text string 查找指定的字符串
+		nmap <C-\>t :GscopeFind t <C-R>=expand("<cword>")<CR><CR>
+		"Find this egrep pattern 查找egrep模式，相当于egrep功能，但查找速度快多了
+		nmap <C-\>e :GscopeFind e <C-R>=expand("<cword>")<CR><CR>
+		"Find this file 查找并打开文件，类似vim的能
+		nmap <C-\>f :GscopeFind f <C-R>=expand("<cfile>")<CR><CR>
+		"Find files #including this file 查找包含本文件的文件
+		nmap <C-\>i :GscopeFind i ^<C-R>=expand("<cfile>")<CR>$<CR>
+	endif
 endif
 
 " ===============配置nerd-tree的参数
@@ -125,17 +170,17 @@ let NERDTreeDirArrows = 1
 let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 " nerdtree的git文件状设置
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
+	\ 'Modified'  :'✹',
+	\ 'Staged'    :'✚',
+	\ 'Untracked' :'✭',
+	\ 'Renamed'   :'➜',
+	\ 'Unmerged'  :'═',
+	\ 'Deleted'   :'✖',
+	\ 'Dirty'     :'✗',
+	\ 'Ignored'   :'☒',
+	\ 'Clean'     :'✔︎',
+	\ 'Unknown'   :'?',
+	\ }
 " 为不同的文件进行不同的高亮上色
 let s:brown = "905532"
 let s:aqua =  "3AFFDB"
