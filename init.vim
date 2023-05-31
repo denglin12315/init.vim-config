@@ -15,6 +15,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Use release branch (recommended)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'APZelos/blamer.nvim'
 call plug#end()
 
 set nu
@@ -251,4 +252,9 @@ inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 " Use coc#pum#info() if you need to confirm completion, only when there's selected complete item
 inoremap <silent><expr> <cr> coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "\<C-g>u\<CR>"
 
+" ==============配置git blamer
+let g:blamer_enabled = 1
+let g:blamer_delay = 500
+highlight Blamer guifg=lightgrey
+let g:blamer_date_format = '%y/%m/%d %H:%M'
 
