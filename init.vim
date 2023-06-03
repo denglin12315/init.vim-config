@@ -21,6 +21,8 @@ call plug#end()
 set nu
 syntax on
 colorscheme monokai
+:set list
+:set listchars=tab:->,trail:.
 
 " ================== vim-airline插件配置
 " -- 启用标签栏
@@ -80,9 +82,9 @@ let g:airline_symbols.maxlinenr = '☰ '
 let g:airline_symbols.dirty='⚡'
 
 "-- 快捷键e切换到前一个标签
-nmap e <Plug>AirlineSelectPrevTab
+nmap <Tab> <Plug>AirlineSelectPrevTab
 "-- 快捷键E切换到后一个标签
-nmap E <Plug>AirlineSelectNextTab
+nmap <S-Tab> <Plug>AirlineSelectNextTab
 
 " ================== vim-gutentags插件配置
 " gutentags搜索工程根目录的标志，碰到这些文件/目录名就代表找到了工程的根目录，停止向上一级目录递归
@@ -255,6 +257,5 @@ inoremap <silent><expr> <cr> coc#pum#visible() && coc#pum#info()['index'] != -1 
 " ==============配置git blamer
 let g:blamer_enabled = 1
 let g:blamer_delay = 500
-highlight Blamer guifg=lightgrey
 let g:blamer_date_format = '%y/%m/%d %H:%M'
 
