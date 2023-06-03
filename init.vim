@@ -21,8 +21,8 @@ call plug#end()
 set nu
 syntax on
 colorscheme monokai
-:set list
-:set listchars=tab:->,trail:.
+set list
+set listchars=tab:->,trail:.
 
 " ================== vim-airline插件配置
 " -- 启用标签栏
