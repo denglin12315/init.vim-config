@@ -16,10 +16,12 @@ Plug 'junegunn/fzf.vim'
 " Use release branch (recommended)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'APZelos/blamer.nvim'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 set nu
 syntax on
+filetype plugin indent on
 colorscheme monokai
 set list
 set listchars=tab:->,trail:.
@@ -259,3 +261,5 @@ let g:blamer_enabled = 1
 let g:blamer_delay = 500
 let g:blamer_date_format = '%y/%m/%d %H:%M'
 
+" ==============配置rust.vim
+let g:rustfmt_autosave = 1
