@@ -17,6 +17,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'APZelos/blamer.nvim'
 Plug 'rust-lang/rust.vim'
+Plug 'skywind3000/vim-preview'
 call plug#end()
 
 set nu
@@ -263,3 +264,8 @@ let g:blamer_date_format = '%y/%m/%d %H:%M'
 
 " ==============配置rust.vim
 let g:rustfmt_autosave = 1
+" ==============配置vim-preview
+" config for preview quickfix
+autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
+autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+
