@@ -19,6 +19,11 @@ Plug 'APZelos/blamer.nvim'
 Plug 'rust-lang/rust.vim'
 Plug 'skywind3000/vim-preview'
 Plug 'Chiel92/vim-autoformat'
+Plug 'godlygeek/tabular'		" 文本对齐插件
+" markdown support
+Plug 'preservim/vim-markdown'
+Plug 'iamcco/mathjax-support-for-mkdp'	" 数学公式插入支持
+Plug 'iamcco/markdown-preview.vim'
 call plug#end()
 
 set nu
@@ -279,4 +284,11 @@ let g:clang_format#command = 'clang-format'
 let g:clang_format#detect_style_file = 1
 " au BufWrite * :Autoformat    " 保存时自动格式化
 noremap <F4> :Autoformat<CR>
+
+" ==============配置markdown
+let g:vim_markdown_folding_disabled = 1
+nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode
+imap <silent> <F8> <Plug>MarkdownPreview        " for insert mode
+nmap <silent> <F9> <Plug>StopMarkdownPreview    " for normal mode
+imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
 
