@@ -90,6 +90,10 @@ nmap <Tab> <Plug>AirlineSelectPrevTab
 nmap <S-Tab> <Plug>AirlineSelectNextTab
 
 " ================== vim-gutentags插件配置
+" GTAGSLABEL 告诉 gtags 默认 C/C++/Java 等六种原生支持的代码直接使用 gtags 本地分析器，其他语言使用 pygments 模块
+let $GTAGSLABEL = 'native-pygments'
+" 必须设置，否则会找不到 native-pygments 和 language map 的定义。ubuntu下要到 /etc/gtags/ 里找
+let $GTAGSCONF = '/etc/gtags/gtags.conf'
 " gutentags搜索工程根目录的标志，碰到这些文件/目录名就代表找到了工程的根目录，停止向上一级目录递归
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
 
