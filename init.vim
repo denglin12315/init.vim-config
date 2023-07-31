@@ -7,7 +7,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'		" nerdtree支持
-Plug 'Xuyuanp/nerdtree-git-plugin' 	" 显示nredtree中文件和目录的Git状态标志
+Plug 'Xuyuanp/nerdtree-git-plugin'	" 显示nredtree中文件和目录的Git状态标志
 Plug 'ryanoasis/vim-devicons'		" 支持nredtree中文件和目录的图标
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " 支持高亮显示nredtree中的图标
 Plug 'vim-scripts/taglist.vim'
@@ -18,6 +18,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'APZelos/blamer.nvim'
 Plug 'rust-lang/rust.vim'
 Plug 'skywind3000/vim-preview'
+Plug 'Chiel92/vim-autoformat'
 call plug#end()
 
 set nu
@@ -34,17 +35,17 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'desertink'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_idx_format = {
-	\ '0': '0 ',
-	\ '1': '1 ',
-	\ '2': '2 ',
-	\ '3': '3 ',
-	\ '4': '4 ',
-	\ '5': '5 ',
-	\ '6': '6 ',
-	\ '7': '7 ',
-	\ '8': '8 ',
-	\ '9': '9 '
-	\}
+			\ '0': '0 ',
+			\ '1': '1 ',
+			\ '2': '2 ',
+			\ '3': '3 ',
+			\ '4': '4 ',
+			\ '5': '5 ',
+			\ '6': '6 ',
+			\ '7': '7 ',
+			\ '8': '8 ',
+			\ '9': '9 '
+			\}
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -132,7 +133,7 @@ let g:gutentags_define_advanced_commands = 1
 let g:gutentags_trace = 0
 
 " 配置gtags-cscope的参数
-if has("cscope") 	" vim的一种内置函数，用于检查当前vim是否支持cscope的功能
+if has("cscope")	" vim的一种内置函数，用于检查当前vim是否支持cscope的功能
 	if executable('gtags-cscope') && executable('gtags')
 		"禁用原GscopeFind按键映射
 		let g:gutentags_plus_nomap = 1
@@ -181,17 +182,17 @@ let NERDTreeDirArrows = 1
 let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 " nerdtree的git文件状设置
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-	\ 'Modified'  :'✹',
-	\ 'Staged'    :'✚',
-	\ 'Untracked' :'✭',
-	\ 'Renamed'   :'➜',
-	\ 'Unmerged'  :'═',
-	\ 'Deleted'   :'✖',
-	\ 'Dirty'     :'✗',
-	\ 'Ignored'   :'☒',
-	\ 'Clean'     :'✔︎',
-	\ 'Unknown'   :'?',
-	\ }
+			\ 'Modified'  :'✹',
+			\ 'Staged'    :'✚',
+			\ 'Untracked' :'✭',
+			\ 'Renamed'   :'➜',
+			\ 'Unmerged'  :'═',
+			\ 'Deleted'   :'✖',
+			\ 'Dirty'     :'✗',
+			\ 'Ignored'   :'☒',
+			\ 'Clean'     :'✔︎',
+			\ 'Unknown'   :'?',
+			\ }
 " 为不同的文件进行不同的高亮上色
 let s:brown = "905532"
 let s:aqua =  "3AFFDB"
@@ -250,9 +251,9 @@ function! CheckBackspace() abort
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 inoremap <silent><expr> <Tab>
-	\ coc#pum#visible() ? coc#pum#next(1) :
-	\ CheckBackspace() ? "\<Tab>" :
-	\ coc#refresh()
+			\ coc#pum#visible() ? coc#pum#next(1) :
+			\ CheckBackspace() ? "\<Tab>" :
+			\ coc#refresh()
 
 " Use <Tab> and <Shift-Tab> to navigate the completion list
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
@@ -272,4 +273,10 @@ let g:rustfmt_autosave = 1
 " config for preview quickfix
 autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
 autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+
+" ==============配置clang-format
+let g:clang_format#command = 'clang-format'
+let g:clang_format#detect_style_file = 1
+" au BufWrite * :Autoformat    " 保存时自动格式化
+noremap <F4> :Autoformat<CR>
 
