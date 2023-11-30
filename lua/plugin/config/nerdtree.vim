@@ -1,5 +1,4 @@
 " ===============配置nerd-tree的参数
-nnoremap <F2> :NERDTreeToggle<CR>
 " 自动开启nerdtree
 " autocmd vimenter * NERDTree
 " 设定nerdtree的窗口大小
@@ -67,3 +66,4 @@ let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets th
 let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders that did not match any rule
 let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
 
+nnoremap <F5> :NERDTreeToggle<CR>

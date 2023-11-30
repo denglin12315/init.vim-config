@@ -12,5 +12,9 @@ let Tlist_File_Fold_Auto_Close=1
 let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1            " taglist窗口停靠到右边
 let Tlist_Use_SingleClick=1
-nnoremap <F3> :TlistToggle<CR>
+let Tlist_WinWidth = 40
+
+nnoremap <F6> :TlistToggle<CR>
+" 关闭行号和相对行号显示
+:autocmd FileType taglist set norelativenumber nonumber
 

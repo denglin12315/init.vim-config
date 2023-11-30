@@ -32,40 +32,19 @@ packer.startup(function()
 end)
 
 -- nvim基础配置
-vim.api.nvim_exec([[
-        source ~/.config/nvim/general.vim
-]], false)
+require("general")
 
 -- 各个插件配置
-vim.api.nvim_exec([[
-        source ~/.config/nvim/plugin/config/airline.vim
-]], false)
-vim.api.nvim_exec([[
-        source ~/.config/nvim/plugin/config/gutentags.vim
-]], false)
-vim.api.nvim_exec([[
-        source ~/.config/nvim/plugin/config/nerdtree.vim
-]], false)
-vim.api.nvim_exec([[
-        source ~/.config/nvim/plugin/config/taglist.vim
-]], false)
-vim.api.nvim_exec([[
-        source ~/.config/nvim/plugin/config/coc.vim
-]], false)
-vim.api.nvim_exec([[
-        source ~/.config/nvim/plugin/config/gitblamer.vim
-]], false)
-vim.api.nvim_exec([[
-        source ~/.config/nvim/plugin/config/vim-preview.vim
-]], false)
-vim.api.nvim_exec([[
-        source ~/.config/nvim/plugin/config/vim-format.vim
-]], false)
-vim.api.nvim_exec([[
-        source ~/.config/nvim/plugin/config/markdown.vim
-]], false)
-vim.api.nvim_exec([[
-        source ~/.config/nvim/plugin/config/rust.vim
-]], false)
+vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/airline.vim]], false)
+vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/gutentags.vim]], false)
+vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/nerdtree.vim]], false)
+vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/taglist.vim]], false)
+vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/coc.vim]], false)
+vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/gitblamer.vim]], false)
+vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/vim-preview.vim]], false)
+vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/vim-format.vim]], false)
+vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/markdown.vim]], false)
+vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/rust.vim]], false)
 require("plugin.config.toggleterm")
+
 
