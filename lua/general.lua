@@ -24,7 +24,7 @@ vim.opt.listchars:append({ tab = '->', trail = '.' })
 vim.opt.autoindent = true
 
 -- jkhl 移动时光标周围保留8行
-vim.o.scrolloff = 20
+vim.o.scrolloff = 10
 vim.o.sidescrolloff = 8
 
 -- 针对 quickfix 窗口设置高度
