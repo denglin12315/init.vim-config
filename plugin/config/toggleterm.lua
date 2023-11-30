@@ -1,0 +1,12 @@
+local opt = require("toggleterm").setup({
+    open_mapping = [[<c-\>]],
+    -- 打开新终端后自动进入插入模式
+    start_in_insert = true,
+    -- 在当前buffer的下方打开新终端
+    direction = 'vertical',
+    size = 100
+})
+
+-- esc键退出terminal
+vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
+
