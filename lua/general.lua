@@ -30,3 +30,19 @@ vim.opt.sidescrolloff = 8
 -- 针对 quickfix 窗口设置高度
 vim.cmd('autocmd FileType qf setlocal winheight=14')
 
+-- terminal 模式
+-- Define a Lua function to split the window vertically and enter terminal mode
+function split_and_terminal()
+    vim.cmd('vsplit') -- Split the window vertically
+    vim.cmd('wincmd l') -- Move to the right window
+    vim.cmd('terminal') -- Enter terminal mode
+    vim.cmd('set norelativenumber') -- Disable relative line numbers
+    vim.cmd('set nu!') -- Toggle line numbers
+end
+-- Define a Lua function to close the current vsplit window
+function close_vsplit()
+    vim.cmd('q') -- Close the vsplit window
+end
+-- Map the Lua functions to commands
+vim.cmd('command! TS lua split_and_terminal()')
+vim.cmd('command! TC lua close_vsplit()')

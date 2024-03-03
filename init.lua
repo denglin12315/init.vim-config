@@ -28,7 +28,6 @@ packer.startup(function()
 	use 'preservim/vim-markdown'
 	use 'iamcco/mathjax-support-for-mkdp'
 	use 'iamcco/markdown-preview.vim'
-	use {"akinsho/toggleterm.nvim", tag = 'v1.*'}
 end)
 
 -- nvim基础配置
@@ -45,6 +44,5 @@ vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/vim-preview.vim]], f
 vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/vim-format.vim]], false)
 vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/markdown.vim]], false)
 vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/rust.vim]], false)
-require("plugin.config.toggleterm")
 
 
