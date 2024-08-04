@@ -1,6 +1,7 @@
 " ================== vim-airline插件配置
 " -- 启用标签栏
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
+let g:airline_extensions = ['branch', 'tabline']
 " -- 设置标签栏主题
 let g:airline_theme = 'desertink'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -59,3 +60,4 @@ let g:airline_symbols.dirty='⚡'
 nmap <Tab> <Plug>AirlineSelectPrevTab
 "-- 快捷键E切换到后一个标签
 nmap <S-Tab> <Plug>AirlineSelectNextTab
+
