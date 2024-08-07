@@ -18,7 +18,7 @@ packer.startup(function()
 	-- use 'saadparwaiz1/cmp_luasnip'
 	use 'hrsh7th/cmp-vsnip'
 	use 'hrsh7th/vim-vsnip'
-
+	use 'tpope/vim-fugitive'
 	use 'crusoexia/vim-monokai'
 	use 'vim-airline/vim-airline'
 	use 'vim-airline/vim-airline-themes'

@@ -185,6 +185,11 @@ _G.packer_plugins = {
     path = "/home/ldeng/.local/share/nvim/site/pack/packer/start/vim-devicons",
     url = "https://github.com/ryanoasis/vim-devicons"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/ldeng/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-markdown"] = {
     loaded = true,
     path = "/home/ldeng/.local/share/nvim/site/pack/packer/start/vim-markdown",
