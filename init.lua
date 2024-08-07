@@ -7,8 +7,18 @@ packer.startup(function()
 	use {'wbthomason/packer.nvim', opt = true}
 
 	-- List your plugins here
-	use 'ludovicchabant/vim-gutentags'
-	use 'skywind3000/gutentags_plus'
+	use 'neovim/nvim-lspconfig'
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'
+	use 'hrsh7th/nvim-cmp'
+	-- For luasnip users.
+	-- use 'L3MON4D3/LuaSnip'
+	-- use 'saadparwaiz1/cmp_luasnip'
+	use 'hrsh7th/cmp-vsnip'
+	use 'hrsh7th/vim-vsnip'
+
 	use 'crusoexia/vim-monokai'
 	use 'vim-airline/vim-airline'
 	use 'vim-airline/vim-airline-themes'
@@ -19,7 +29,7 @@ packer.startup(function()
 	use 'vim-scripts/taglist.vim'
 	use {'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
 	use 'junegunn/fzf.vim'
-	use {'neoclide/coc.nvim', branch = 'release'}
+	--use {'neoclide/coc.nvim', branch = 'release'}
 	use 'APZelos/blamer.nvim'
 	use 'rust-lang/rust.vim'
 	use 'skywind3000/vim-preview'
@@ -35,14 +45,13 @@ require("general")
 
 -- 各个插件配置
 vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/airline.vim]], false)
-vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/gutentags.vim]], false)
 vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/nerdtree.vim]], false)
 vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/taglist.vim]], false)
-vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/coc.vim]], false)
+--vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/coc.vim]], false)
 vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/gitblamer.vim]], false)
 vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/vim-preview.vim]], false)
 vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/vim-format.vim]], false)
 vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/markdown.vim]], false)
-vim.api.nvim_exec([[source ~/.config/nvim/lua/plugin/config/rust.vim]], false)
+require("plugin.config.lsp")
 
 
